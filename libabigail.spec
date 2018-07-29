@@ -4,7 +4,7 @@
 #
 Name     : libabigail
 Version  : 1.4
-Release  : 1
+Release  : 2
 URL      : https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.4.tar.gz
 Source0  : https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.4.tar.gz
 Summary  : The ABI Generic Analysis and Instrumentation Library
