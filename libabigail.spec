@@ -4,7 +4,7 @@
 #
 Name     : libabigail
 Version  : 1.5
-Release  : 3
+Release  : 4
 URL      : https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.5.tar.gz
 Source0  : https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.5.tar.gz
 Summary  : The ABI Generic Analysis and Instrumentation Library
@@ -74,7 +74,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540739719
+export SOURCE_DATE_EPOCH=1541259416
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -86,7 +90,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1540739719
+export SOURCE_DATE_EPOCH=1541259416
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libabigail
 cp COPYING %{buildroot}/usr/share/package-licenses/libabigail/COPYING
