@@ -1,0 +1,1 @@
+make -C doc/manuals install-man-and-info-doc DESTDIR=%{buildroot}
