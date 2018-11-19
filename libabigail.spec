@@ -4,7 +4,7 @@
 #
 Name     : libabigail
 Version  : 1.5
-Release  : 6
+Release  : 7
 URL      : https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.5.tar.gz
 Source0  : https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.5.tar.gz
 Summary  : The ABI Generic Analysis and Instrumentation Library
@@ -24,6 +24,7 @@ BuildRequires : pkgconfig(libzip)
 BuildRequires : rpm-common
 BuildRequires : valgrind
 Patch1: build.patch
+Patch2: 0001-Add-a-hidden-option-to-abidw-to-make-it-exit-if-it-s.patch
 
 %description
 This is the Application Binary Interface Generic Analysis and
@@ -78,13 +79,14 @@ man components for the libabigail package.
 %prep
 %setup -q -n libabigail-1.5
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542569377
+export SOURCE_DATE_EPOCH=1542665237
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -100,7 +102,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1542569377
+export SOURCE_DATE_EPOCH=1542665237
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libabigail
 cp COPYING %{buildroot}/usr/share/package-licenses/libabigail/COPYING
