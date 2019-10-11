@@ -4,4 +4,3 @@ Configure miss: bash-completion
 Configure miss: python3 module: xdg
 Configure miss: python3 module: koji
 Configure miss: python3 module: mock
-Configure miss: python3 module: rpm

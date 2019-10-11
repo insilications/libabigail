@@ -4,7 +4,7 @@
 #
 Name     : libabigail
 Version  : 1.6
-Release  : 9
+Release  : 10
 URL      : https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.6.tar.gz
 Source0  : https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.6.tar.gz
 Summary  : The ABI Generic Analysis and Instrumentation Library
@@ -21,7 +21,6 @@ BuildRequires : doxygen
 BuildRequires : elfutils-dev
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pkgconfig(libzip)
-BuildRequires : rpm-common
 BuildRequires : valgrind
 Patch1: build.patch
 Patch2: 0001-Add-a-hidden-option-to-abidw-to-make-it-exit-if-it-s.patch
@@ -85,24 +84,25 @@ man components for the libabigail package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1553791859
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570834079
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %configure --disable-static
-make  %{?_smp_mflags} ; make man
+make  %{?_smp_mflags}  ; make man
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1553791859
+export SOURCE_DATE_EPOCH=1570834079
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libabigail
 cp COPYING %{buildroot}/usr/share/package-licenses/libabigail/COPYING
