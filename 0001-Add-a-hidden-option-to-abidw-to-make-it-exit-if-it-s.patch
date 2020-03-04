@@ -14,7 +14,7 @@ Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
  1 file changed, 54 insertions(+)
 
 diff --git a/tools/abidw.cc b/tools/abidw.cc
-index 3b53199..2f3c280 100644
+index 3b53199..15790c2 100644
 --- a/tools/abidw.cc
 +++ b/tools/abidw.cc
 @@ -27,6 +27,8 @@
@@ -26,14 +26,14 @@ index 3b53199..2f3c280 100644
  #include <cassert>
  #include <cstring>
  #include <cstdio>
-@@ -92,6 +94,7 @@ struct options
-   vector<string>	suppression_paths;
+@@ -93,6 +95,7 @@ struct options
    vector<string>	kabi_whitelist_paths;
    suppressions_type	kabi_whitelist_supprs;
-+  int			max_run_time;
    bool			display_version;
++  int			max_run_time;
    bool			check_alt_debug_info_path;
    bool			show_base_name_alt_debug_info_path;
+   bool			write_architecture;
 @@ -111,6 +114,7 @@ struct options
  
    options()
