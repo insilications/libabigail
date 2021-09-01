@@ -1,0 +1,10 @@
+--enable-static
+--disable-shared
+--disable-assert
+--enable-python3=yes
+--enable-bash-completion=yes
+--enable-fedabipkgdiff=yes
+--enable-tar=yes
+--enable-rpm=yes
+--enable-rpm415=auto
+--disable-valgrind

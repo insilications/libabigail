@@ -1,0 +1,17 @@
+# sd "\s\-lbz2" "/usr/lib64/libbz2.a" $(fd -uu --follow Makefile$)
+# sd "\s\-llzma" "/usr/lib64/liblzma.a" $(fd -uu --follow Makefile$)
+# sd "\s\-llz4" "/usr/lib64/liblz4.a" $(fd -uu --follow Makefile$)
+# sd "\s\-lzstd" "/usr/lib64/libzstd.a" $(fd -uu --follow Makefile$)
+# sd "\s\-lz" "/usr/lib64/libz.a" $(fd -uu --follow Makefile$)
+sd "\s\-lxml2" " /usr/lib64/libxml2.a /usr/lib64/libz.a /usr/lib64/liblzma.a" $(fd -uu --follow Makefile$)
+sd "\s\-lelf" " /usr/lib64/libelf.a /usr/lib64/libz.a" $(fd -uu --follow Makefile$)
+sd "\s\-ldw" " /usr/lib64/libdw.a /usr/lib64/libelf.a /usr/lib64/libz.a /usr/lib64/liblzma.a /usr/lib64/libzstd.a" $(fd -uu --follow Makefile$)
+
+sd "\-lxml2" -- "-Wl,--start-group /usr/lib64/libxml2.a /usr/lib64/libz.a /usr/lib64/liblzma.a /usr/lib64/libelf.a /usr/lib64/libdw.a /usr/lib64/libzstd.a -Wl,--end-group" $(fd -uu --follow Makefile$)
+sd "\-lelf" -- "-Wl,--start-group /usr/lib64/libxml2.a /usr/lib64/libz.a /usr/lib64/liblzma.a /usr/lib64/libelf.a /usr/lib64/libdw.a /usr/lib64/libzstd.a -Wl,--end-group" $(fd -uu --follow Makefile$)
+sd "\-ldw" -- "-Wl,--start-group /usr/lib64/libxml2.a /usr/lib64/libz.a /usr/lib64/liblzma.a /usr/lib64/libelf.a /usr/lib64/libdw.a /usr/lib64/libzstd.a -Wl,--end-group" $(fd -uu --follow Makefile$)
+
+
+
+
+"-Wl,--whole-archive,--start-group,/usr/lib64/libssl.a,/usr/lib64/libcrypto.a,/usr/lib64/libz.a,--end-group,--no-whole-archive"

@@ -1,1 +1,1 @@
-; make man
+all man V=1 VERBOSE=1
