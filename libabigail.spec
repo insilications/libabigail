@@ -10,6 +10,8 @@ Source0  : file:///aot/build/clearlinux/packages/libabigail/libabigail-v1.8.2.ta
 Summary  : The ABI Generic Analysis and Instrumentation Library
 Group    : Development/Tools
 License  : GPL-2.0
+Requires: libabigail-bin = %{version}-%{release}
+Requires: libabigail-man = %{version}-%{release}
 BuildRequires : Jinja2
 BuildRequires : Sphinx
 BuildRequires : bash-completion
@@ -83,6 +85,33 @@ Patch2: 0002-Add-a-hidden-option-to-abidw-to-make-it-exit-if-it-s.patch
 This is the Application Binary Interface Generic Analysis and
 Instrumentation Library.
 
+%package bin
+Summary: bin components for the libabigail package.
+Group: Binaries
+
+%description bin
+bin components for the libabigail package.
+
+
+%package dev
+Summary: dev components for the libabigail package.
+Group: Development
+Requires: libabigail-bin = %{version}-%{release}
+Provides: libabigail-devel = %{version}-%{release}
+Requires: libabigail = %{version}-%{release}
+
+%description dev
+dev components for the libabigail package.
+
+
+%package man
+Summary: man components for the libabigail package.
+Group: Default
+
+%description man
+man components for the libabigail package.
+
+
 %prep
 %setup -q -n libabigail
 cd %{_builddir}/libabigail
@@ -95,7 +124,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1630703376
+export SOURCE_DATE_EPOCH=1630704267
 export GCC_IGNORE_WERROR=1
 ## altflags_pgof content
 ## pgo generate
@@ -258,7 +287,7 @@ fi
 
 
 %install
-export SOURCE_DATE_EPOCH=1630703376
+export SOURCE_DATE_EPOCH=1630704267
 rm -rf %{buildroot}
 %make_install
 ## install_append content
@@ -267,3 +296,54 @@ make -C doc/manuals install-man-and-info-doc DESTDIR=%{buildroot}
 
 %files
 %defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/usr/bin/abicompat
+/usr/bin/abidiff
+/usr/bin/abidw
+/usr/bin/abilint
+/usr/bin/abipkgdiff
+/usr/bin/fedabipkgdiff
+/usr/bin/kmidiff
+
+%files dev
+%defattr(-,root,root,-)
+/usr/include/libabigail/abg-comp-filter.h
+/usr/include/libabigail/abg-comparison.h
+/usr/include/libabigail/abg-config.h
+/usr/include/libabigail/abg-corpus.h
+/usr/include/libabigail/abg-cxx-compat.h
+/usr/include/libabigail/abg-diff-utils.h
+/usr/include/libabigail/abg-dwarf-reader.h
+/usr/include/libabigail/abg-fwd.h
+/usr/include/libabigail/abg-hash.h
+/usr/include/libabigail/abg-ini.h
+/usr/include/libabigail/abg-interned-str.h
+/usr/include/libabigail/abg-ir.h
+/usr/include/libabigail/abg-libxml-utils.h
+/usr/include/libabigail/abg-reader.h
+/usr/include/libabigail/abg-regex.h
+/usr/include/libabigail/abg-reporter.h
+/usr/include/libabigail/abg-sptr-utils.h
+/usr/include/libabigail/abg-suppression.h
+/usr/include/libabigail/abg-tools-utils.h
+/usr/include/libabigail/abg-traverse.h
+/usr/include/libabigail/abg-version.h
+/usr/include/libabigail/abg-viz-common.h
+/usr/include/libabigail/abg-viz-dot.h
+/usr/include/libabigail/abg-viz-svg.h
+/usr/include/libabigail/abg-workers.h
+/usr/include/libabigail/abg-writer.h
+/usr/lib64/libabigail/default.abignore
+/usr/lib64/pkgconfig/libabigail.pc
+/usr/share/aclocal/*.m4
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/abicompat.1
+/usr/share/man/man1/abidiff.1
+/usr/share/man/man1/abidw.1
+/usr/share/man/man1/abilint.1
+/usr/share/man/man1/abipkgdiff.1
+/usr/share/man/man7/libabigail.7
