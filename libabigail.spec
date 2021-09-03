@@ -4,7 +4,7 @@
 #
 Name     : libabigail
 Version  : 1.8.2
-Release  : 408
+Release  : 409
 URL      : file:///aot/build/clearlinux/packages/libabigail/libabigail-v1.8.2.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/libabigail/libabigail-v1.8.2.tar.gz
 Summary  : The ABI Generic Analysis and Instrumentation Library
@@ -61,6 +61,8 @@ BuildRequires : pyxdg
 BuildRequires : requests
 BuildRequires : rpm-extras
 BuildRequires : six
+BuildRequires : tar
+BuildRequires : tar-dev
 BuildRequires : templated-dictionary
 BuildRequires : util-linux
 BuildRequires : valgrind
@@ -95,7 +97,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1630705626
+export SOURCE_DATE_EPOCH=1630706235
 export GCC_IGNORE_WERROR=1
 ## altflags_pgof content
 ## pgo generate
@@ -196,8 +198,8 @@ export LIBS="${LIBS_GENERATE}"
 --enable-rpm415=auto \
 --disable-valgrind
 ## make_macro content
-make %{?_smp_mflags} LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-as-needed,--no-whole-archive" V=1 VERBOSE=1
-make %{?_smp_mflags} man LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-as-needed,--no-whole-archive" V=1 VERBOSE=1
+make %{?_smp_mflags} LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-whole-archive" V=1 VERBOSE=1
+make %{?_smp_mflags} man LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-whole-archive" V=1 VERBOSE=1
 ## make_macro end
 
 ## profile_payload start
@@ -258,14 +260,14 @@ unset LIBS
 --enable-rpm415=auto \
 --disable-valgrind
 ## make_macro content
-make %{?_smp_mflags} LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-as-needed,--no-whole-archive" V=1 VERBOSE=1
-make %{?_smp_mflags} man LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-as-needed,--no-whole-archive" V=1 VERBOSE=1
+make %{?_smp_mflags} LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-whole-archive" V=1 VERBOSE=1
+make %{?_smp_mflags} man LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-whole-archive" V=1 VERBOSE=1
 ## make_macro end
 fi
 
 
 %install
-export SOURCE_DATE_EPOCH=1630705626
+export SOURCE_DATE_EPOCH=1630706235
 rm -rf %{buildroot}
 %make_install
 ## install_append content

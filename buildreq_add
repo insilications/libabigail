@@ -49,6 +49,7 @@ pyxdg
 requests
 rpm-extras
 six
+tar
 templated-dictionary
 util-linux
 valgrind
