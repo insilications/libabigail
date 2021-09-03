@@ -1,1 +1,1 @@
-all man V=1 VERBOSE=1 LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-whole-archive"
+all man V=1 VERBOSE=1 LIBS="-Wl,--whole-archive,--start-group,--as-needed,/usr/lib64/libxml2.a,/usr/lib64/libz.a,/usr/lib64/liblzma.a,/usr/lib64/libelf.a,/usr/lib64/libdw.a,/usr/lib64/libzstd.a,--end-group,--no-as-needed,--no-whole-archive"
